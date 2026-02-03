@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melted Minds - Profile</title>
+        <link rel="stylesheet" href="assets/style.css">
+        <script defer src="assets/main.js"></script>
+        <script defer src="assets/auth.js"></script>
+        <style>
+        .profile-tabs button.active {
+            background: var(--accent-dark);
+            color: #fff;
+        }
+        .profile-tabs button {
+            min-width: 110px;
+        }
+        </style>
+</head>
+<body>
+    <header id="main-header"></header>
+    <main>
+        <section class="profile-section">
+            <h2>User Profile</h2>
+            <div id="profileContent"></div>
+            <div id="profileAuthTabs" class="profile-tabs" style="display:none;">
+                <button id="showLogin" type="button">Login</button>
+                <button id="showRegister" type="button">Register</button>
+            </div>
+            <div id="profileLoginForm" style="display:none;"></div>
+            <div id="profileRegisterForm" style="display:none;"></div>
+        </section>
+    </main>
+    <footer id="main-footer"></footer>
+    <div id="popup" class="popup"></div>
+    <script>
+    // Profile page logic
+    let activeTab = 'login';
+    function renderProfile() {
+        const user = localStorage.getItem('mm_current_user');
+        const users = JSON.parse(localStorage.getItem('mm_users') || '{}');
+        const content = document.getElementById('profileContent');
+        if(user && users[user]) {
+            content.innerHTML = `<div class='profile-card'>
+                <h3>Welcome, ${user}!</h3>
+                <p><strong>Mobile:</strong> ${users[user].mobile || 'N/A'}</p>
+                <button onclick="logoutProfile()">Logout</button>
+            </div>`;
+            document.getElementById('profileAuthTabs').style.display = 'none';
+            document.getElementById('profileLoginForm').style.display = 'none';
+            document.getElementById('profileRegisterForm').style.display = 'none';
+        } else {
+            content.innerHTML = '<p>Please login or register to view your profile.</p>';
+            document.getElementById('profileAuthTabs').style.display = 'flex';
+            if(activeTab === 'register') showRegisterForm();
+            else showLoginForm();
+        }
+    }
+    function logoutProfile() {
+        localStorage.removeItem('mm_current_user');
+        showPopup('Logged out!');
+        setTimeout(renderProfile, 800);
+    }
+    function showLoginForm() {
+        activeTab = 'login';
+        document.getElementById('showLogin').classList.add('active');
+        document.getElementById('showRegister').classList.remove('active');
+        document.getElementById('profileLoginForm').style.display = 'block';
+        document.getElementById('profileRegisterForm').style.display = 'none';
+        document.getElementById('profileLoginForm').innerHTML = `
+        <form id='profileLogin'>
+            <input type='text' id='loginUsername' placeholder='Username' required>
+            <input type='password' id='loginPassword' placeholder='Password' required>
+            <button type='submit'>Login</button>
+        </form>`;
+        document.getElementById('profileLogin').onsubmit = function(e) {
+            e.preventDefault();
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const users = JSON.parse(localStorage.getItem('mm_users') || '{}');
+            if(!users[username] || users[username].password !== password){
+                showPopup('Invalid username or password!');
+                return;
+            }
+            localStorage.setItem('mm_current_user', username);
+            showPopup('Login successful!');
+            setTimeout(renderProfile, 800);
+        };
+    }
+    function showRegisterForm() {
+        activeTab = 'register';
+        document.getElementById('showLogin').classList.remove('active');
+        document.getElementById('showRegister').classList.add('active');
+        document.getElementById('profileLoginForm').style.display = 'none';
+        document.getElementById('profileRegisterForm').style.display = 'block';
+        document.getElementById('profileRegisterForm').innerHTML = `
+        <form id='profileRegister'>
+            <input type='text' id='regUsername' placeholder='Username' required>
+            <input type='password' id='regPassword' placeholder='Password' required>
+            <input type='tel' id='regMobile' placeholder='Mobile Number' pattern='[0-9]{10}' maxlength='10' required>
+            <button type='submit'>Register</button>
+        </form>`;
+        document.getElementById('profileRegister').onsubmit = function(e) {
+            e.preventDefault();
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const mobile = document.getElementById('regMobile').value.trim();
+            const users = JSON.parse(localStorage.getItem('mm_users') || '{}');
+            if(users[username]){
+                showPopup('User already exists!');
+                return;
+            }
+            if(!/^\d{10}$/.test(mobile)){
+                showPopup('Enter a valid 10-digit mobile number!');
+                return;
+            }
+            users[username] = { password, mobile };
+            localStorage.setItem('mm_users', JSON.stringify(users));
+            showPopup('Registration successful! Please login.');
+            setTimeout(showLoginForm, 1000);
+        };
+    }
+    document.getElementById('showLogin').onclick = showLoginForm;
+    document.getElementById('showRegister').onclick = showRegisterForm;
+    renderProfile();
+    </script>
+</body>
+</html>

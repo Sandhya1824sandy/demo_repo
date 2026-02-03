@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melted Minds - Register</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script defer src="assets/auth.js"></script>
+</head>
+<body>
+    <header id="main-header"></header>
+    <main class="form-container">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <input type="text" id="regUsername" placeholder="Username" required>
+            <input type="password" id="regPassword" placeholder="Password" required>
+            <input type="tel" id="regMobile" placeholder="Mobile Number" pattern="[0-9]{10}" maxlength="10" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </main>
+    <footer id="main-footer"></footer>
+    <div id="popup" class="popup"></div>
+</body>
+</html>

@@ -1,0 +1,535 @@
+/* Profile page login/register form spacing */
+#profileLoginForm form, #profileRegisterForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+#profileLoginForm input, #profileRegisterForm input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.1rem 1rem;
+  font-size: 1.13rem;
+  margin-bottom: 0.2rem;
+}
+#profileLoginForm button, #profileRegisterForm button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+#profileLoginForm button:hover, #profileRegisterForm button:hover {
+  background: var(--accent-dark);
+  transform: scale(1.05);
+}
+
+.profile-section {
+  max-width: 420px;
+  margin: 2.5rem auto;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  text-align: center;
+  animation: fadeIn 1s;
+}
+.profile-section h2 {
+  font-family: 'Pacifico', cursive;
+  color: var(--accent-dark);
+  margin-bottom: 1.2rem;
+}
+.profile-card {
+  background: #ffe0ec;
+  border-radius: 14px;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 2px 12px #ffb3c6;
+  margin-bottom: 1.2rem;
+  color: #b23a48;
+  font-size: 1.08rem;
+}
+.profile-card h3 {
+  margin-top: 0;
+  color: var(--accent-dark);
+  font-family: 'Pacifico', cursive;
+  font-size: 1.3rem;
+}
+.profile-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.profile-tabs button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.profile-tabs button:hover {
+  background: var(--accent-dark);
+  transform: scale(1.05);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.main-logo {
+  width: 220px;
+  max-width: 90vw;
+  height: auto;
+  border-radius: 30px;
+  box-shadow: 0 4px 24px #ffb3c6;
+  background: #fff;
+  padding: 0.5rem 1rem;
+  animation: fadeIn 1.2s;
+}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+:root {
+  --main-bg: #fff5f7;
+  --accent: #ff6f91;
+  --accent-dark: #ff3e6c;
+  --header-bg: #fff0f5;
+  --footer-bg: #ffe0ec;
+  --card-bg: #fff;
+  --shadow: 0 4px 16px rgba(255,111,145,0.15);
+  --radius: 18px;
+  --transition: 0.3s cubic-bezier(.4,2,.6,1);
+}
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+ 
+  background: linear-gradient(135deg, #fff5f7 0%, #ffe0ec 20%, #ffeaa7 40%, #b2f7ef 60%, #f3c6ff 80%, #fff0f5 100%);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-size: 200% 200%;
+  animation: bgMove 12s ease-in-out infinite;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+header, footer {
+  width: 100%;
+  padding: 1.2rem 0;
+  text-align: center;
+  background: var(--header-bg);
+  box-shadow: var(--shadow);
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: var(--accent-dark);
+  letter-spacing: 2px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  margin-bottom: 1rem;
+}
+.logo {
+  width: 80px;
+  height: auto;
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+footer {
+  background: var(--footer-bg);
+  font-size: 1.1rem;
+  color: #b23a48;
+  border-radius: var(--radius) var(--radius) 0 0;
+  margin-top: auto;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+nav a {
+  text-decoration: none;
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: color var(--transition);
+  position: relative;
+}
+nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--accent-dark);
+  transition: width var(--transition);
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+}
+nav a:hover::after {
+  width: 100%;
+}
+nav a.active {
+  color: var(--accent);
+}
+.hero {
+  background: linear-gradient(120deg, #ffe0ec 0%, #fff0f5 100%);
+  padding: 2.5rem 1rem 2rem 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  margin: 1rem auto 2rem auto;
+  max-width: 700px;
+  animation: fadeIn 1.2s;
+}
+.hero h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  color: var(--accent-dark);
+  margin-bottom: 0.5rem;
+}
+.hero p {
+  font-size: 1.3rem;
+  color: #b23a48;
+}
+.cta-btn {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 0.7rem 2.2rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background var(--transition), transform var(--transition);
+  text-decoration: none;
+}
+.cta-btn:hover {
+  background: var(--accent-dark);
+  transform: scale(1.07) rotate(-2deg);
+}
+.cards-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 260px;
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+  animation: popIn 0.7s;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.04) rotate(-1deg);
+  box-shadow: 0 8px 32px rgba(255,111,145,0.25);
+}
+.card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 4px solid var(--accent);
+  box-shadow: 0 2px 12px #ffb3c6;
+  background: #fff0f5;
+}
+.card h3 {
+  font-family: 'Pacifico', cursive;
+  color: var(--accent-dark);
+  font-size: 1.4rem;
+  margin: 0.5rem 0 0.2rem 0;
+}
+.card .price {
+  color: #b23a48;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+.card .offer {
+  background: #ffb3c6;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  animation: pulse 1.2s infinite alternate;
+}
+.form-container {
+  max-width: 400px;
+  margin: 2.5rem auto;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  text-align: center;
+  animation: fadeIn 1s;
+}
+.form-container h2 {
+  font-family: 'Pacifico', cursive;
+  color: var(--accent-dark);
+  margin-bottom: 1.2rem;
+}
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.form-container input, .form-container textarea {
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #ffb3c6;
+  font-size: 1rem;
+  outline: none;
+  transition: border var(--transition);
+}
+.form-container input:focus, .form-container textarea:focus {
+  border: 1.5px solid var(--accent-dark);
+}
+.form-container button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.form-container button:hover {
+  background: var(--accent-dark);
+  transform: scale(1.05);
+}
+.about-section, .contact-section, .explore-section, .top-selling-section, .offer-section {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  animation: fadeIn 1s;
+}
+.about-img {
+  width: 220px;
+  display: block;
+  margin: 1.5rem auto 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px #ffb3c6;
+}
+.scrolling-images {
+  margin: 2rem 0;
+  overflow: hidden;
+  position: relative;
+}
+.scroll-left, .scroll-right {
+  display: flex;
+  gap: 1rem;
+  animation: scroll 10s linear infinite;
+}
+.scroll-left {
+  animation-direction: normal;
+}
+.scroll-right {
+  animation-direction: reverse;
+}
+.scroll-left img, .scroll-right img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px #ffb3c6;
+}
+@keyframes scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.big-image-section {
+  margin: 2rem 0;
+  text-align: center;
+}
+.big-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.popup {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background: var(--accent-dark);
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #ffb3c6;
+  font-size: 1.1rem;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transition: opacity 0.4s, top 0.4s;
+}
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;
+  top: 60px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pulse {
+  from { box-shadow: 0 0 0 0 #ffb3c6; }
+  to { box-shadow: 0 0 16px 6px #ffb3c6; }
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: #ffe0ec;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffb3c6;
+  border-radius: 10px;
+}
+.contact-section, .explore-section, .top-selling-section, .offer-section {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  animation: fadeIn 1s;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.contact-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.1rem 1rem;
+  font-size: 1.13rem;
+  margin-bottom: 0.2rem;
+}
+.contact-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+  .contact-form button {
+    width: 100%;
+  }
+}
+.store-details {
+  margin-top: 2.2rem;
+  background: #ffe0ec;
+  border-radius: 14px;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 2px 12px #ffb3c6;
+  text-align: left;
+  font-size: 1.08rem;
+  color: #b23a48;
+  animation: fadeIn 1.2s;
+}
+.store-details h3 {
+  margin-top: 0;
+  color: var(--accent-dark);
+  font-family: 'Pacifico', cursive;
+  font-size: 1.3rem;
+}
+/* View button on cards */
+.view-btn {
+  margin-top: 0.8rem;
+  background: linear-gradient(90deg,var(--accent),var(--accent-dark));
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.view-btn:hover { transform: scale(1.03); }
+/* Modal styles */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.modal-inner {
+  width: 90%;
+  max-width: 900px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.2);
+  animation: popIn 0.25s ease;
+}
+.modal-close {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  font-size: 1.6rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.modal-img {
+  width: 48%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.modal-info { width: 52%; text-align: left }
+.modal-info .modal-title { font-family: 'Pacifico', cursive; color: var(--accent-dark); margin-top: 0 }
+.modal-meta { margin-top: 0.8rem; color: #b23a48 }
+@media (max-width: 700px){
+  .modal-inner { flex-direction: column; }
+  .modal-img { width: 100%; }
+  .modal-info { width: 100%; }
+}
